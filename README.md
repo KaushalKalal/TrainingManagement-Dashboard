@@ -4,6 +4,40 @@ A MERN stack project that allows instructors to manage training modules and trac
 
 ---
 
+
+## 🧰 Packages & Dependencies
+
+### 🔷 Frontend (React)
+
+**Packages used:**
+- react
+- react-router-dom
+- axios
+- bootstrap
+- cd Frontend
+
+- npm runn dev
+- App will run on: "http://localhost:5173"
+
+
+### 🔶 Backend 
+
+**Packages used:**
+- express
+- mongoose
+- cors
+- dotenv
+- jsonwebtoken
+- bcryptjs
+- nodemon (for development)
+- cd Backend
+
+- node server.js
+- Server will run on: "http://localhost:5000"
+
+
+
+
 ## 📌 Features
 
 ### 👨‍🏫 Instructor Features:
