@@ -15,6 +15,15 @@ import SecurityCode from "./models/SecurityCode.js";
 // Load environment variables from .env file
 dotenv.config();
 
+app.use(cors(
+  {
+    origin : ["https://deploy-mern-1whq.vercel.app"]
+    methods : ["POST","GET"]
+    credentials : true
+  }
+))
+
+
 const app = express();
 
 // Middleware
