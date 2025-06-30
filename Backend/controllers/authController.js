@@ -107,8 +107,6 @@ export const forgotPassword = async (req, res) => {
   const token = crypto.randomBytes(20).toString("hex");
   resetTokens.set(email, token);
 
-  // This simulates sending a reset link via email
-  console.log(`Reset token for ${email}: ${token}`);
 
   res.json({ message: "Reset link sent (simulated). Check console." });
 };
