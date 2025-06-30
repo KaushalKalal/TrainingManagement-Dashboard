@@ -21,13 +21,6 @@ const app = express();
 app.use(express.json()); // Parse incoming JSON requests
 app.use(cors());         // Enable CORS for all origins
 
-app.use(cors(
-  {
-    origin : ["https://deploy-mern-1whq.vercel.app"]
-    methods : ["POST","GET"]
-    credentials : true
-  }
-))
 
 // Test route (root URL)
 app.get("/", (req, res) => {
