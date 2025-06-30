@@ -15,13 +15,11 @@ import SecurityCode from "./models/SecurityCode.js";
 // Load environment variables from .env file
 dotenv.config();
 
-
 const app = express();
 
 // Middleware
 app.use(express.json()); // Parse incoming JSON requests
 app.use(cors());         // Enable CORS for all origins
-
 
 // Test route (root URL)
 app.get("/", (req, res) => {
@@ -42,20 +40,29 @@ const seedInstructorCodes = async () => {
       { code: "int-17" },
       { code: "Kaushal" },
     ]);
+    console.log("🌱 Seeded initial instructor codes");
+  } else {
+    console.log("✅ Instructor codes already exist");
   }
 };
 
 // Connect to MongoDB and start the server
 const startServer = async () => {
   try {
+    console.log("🔌 Connecting to MongoDB...");
     await mongoose.connect(process.env.MONGO_URI);
-    await seedInstructorCodes(); // Seed codes before starting
+    console.log("✅ Connected to MongoDB");
+
+    await seedInstructorCodes();
 
     const PORT = process.env.PORT || 5000;
-    app.listen(PORT);
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
   } catch (error) {
-    process.exit(1); // Exit process on failure
+    console.error("❌ Server failed to start:", error.message);
+    process.exit(1);
   }
 };
 
-startServer(); // Boot it up
+startServer();
