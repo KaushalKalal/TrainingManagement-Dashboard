@@ -40,26 +40,27 @@ const seedInstructorCodes = async () => {
       { code: "int-17" },
       { code: "Kaushal" },
     ]);
-    console.log("✅ Instructor codes seeded.");
+    console.log("✅ Instructor codes seeded");
+  } else {
+    console.log("✅ Instructor codes already exist");
   }
 };
 
 // Connect to MongoDB and start the server
 const startServer = async () => {
   try {
-    console.log("🔌 Connecting to MongoDB...");
     await mongoose.connect(process.env.MONGO_URI);
-    console.log("✅ MongoDB connected.");
+    console.log("✅ MongoDB connected");
 
-    await seedInstructorCodes();
+    await seedInstructorCodes(); // Seed codes before starting
 
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
     });
   } catch (error) {
-    console.error("❌ Server failed to start:", error.message);
-    process.exit(1);
+    console.error("❌ Failed to start server:", error.message);
+    process.exit(1); // Exit process on failure
   }
 };
 
