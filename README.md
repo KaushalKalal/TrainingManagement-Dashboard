@@ -27,7 +27,7 @@ A MERN stack project that allows instructors to manage training modules and trac
 - Password hashing with bcrypt
 - Password reset functionality
 
----
+--
 
 ## 🛠️ Tech Stack
 
