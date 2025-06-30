@@ -21,6 +21,7 @@ const app = express();
 app.use(express.json()); // Parse incoming JSON requests
 app.use(cors());         // Enable CORS for all origins
 
+
 // Test route (root URL)
 app.get("/", (req, res) => {
   res.send("API running ✅");
@@ -40,29 +41,20 @@ const seedInstructorCodes = async () => {
       { code: "int-17" },
       { code: "Kaushal" },
     ]);
-    console.log("🌱 Seeded initial instructor codes");
-  } else {
-    console.log("✅ Instructor codes already exist");
   }
 };
 
 // Connect to MongoDB and start the server
 const startServer = async () => {
   try {
-    console.log("🔌 Connecting to MongoDB...");
     await mongoose.connect(process.env.MONGO_URI);
-    console.log("✅ Connected to MongoDB");
-
-    await seedInstructorCodes();
+    await seedInstructorCodes(); // Seed codes before starting
 
     const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-    });
+    app.listen(PORT);
   } catch (error) {
-    console.error("❌ Server failed to start:", error.message);
-    process.exit(1);
+    process.exit(1); // Exit process on failure
   }
 };
 
-startServer();
+startServer(); // Boot it up
